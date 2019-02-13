@@ -32,10 +32,19 @@ class User:
     for friend in response.json()['response']['items']:
       friends_names[friend['id']] = f'{friend["first_name"]} {friend["last_name"]}'
     return friends_names
-
+  
   def get_mutual_friends(self):
       friends_ids_and_names = self.get_friends_ids_and_names()
       params = self.get_params()
+      source_uid = input('Введите числовой идентификатор пользователя, для которого необходимо искать общих друзей: ')
+      if not source_uid:
+        pass
+      else:
+        try:
+          params['source_uid'] = int(source_uid)
+        except ValueError:
+          print('Пожалуйста, перезапустите программу и введите именно ЧИСЛОВОЙ идентификатор пользователя!')
+          exit()
       try:
         target_uid = int(input('Введите числовой идентификатор пользователя, с которым необходимо искать общих друзей: '))
         params['target_uid'] = target_uid
