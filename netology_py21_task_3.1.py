@@ -19,15 +19,13 @@ def read_and_decode():
 
 def fill_data():
   source_text = read_and_decode()
-  data = {'text': ''}
-  data['text'] = source_text
+  data = {'text': source_text}
   return data
 
 def put_langs_to_params():
   initial_lang = input('\nTranslate from: ')
   result_lang = input('\nTranslate to: ')
-  params = {'lang': '-ru', 'srv': 'tr-text', 'id': 'f5c948f1.5c59b9e9.16d39b90-6-0'}
-  params['lang'] = f'{initial_lang}-{result_lang}'
+  params = {'lang': f'{initial_lang}-{result_lang}', 'srv': 'tr-text', 'id': 'f5c948f1.5c59b9e9.16d39b90-6-0'}
   return params
 
 def get_translation():
@@ -38,15 +36,11 @@ def get_translation():
     data_list = [data['text'][i: i+650] for i in range(0, len(data['text']), 650)]
     data_translated = []
     for piece in data_list:
-      resp = requests.get(URL, data = {'text': piece}, params = params)
-      try:
-        data_translated.append(resp.json()['text'][0])
-      except KeyError:
-        print("Just a kindly reminder on language codes:\n 'de' stands for German,\n 'es' for Spanish,\n 'fr' for French\n and 'ru' stands for Russian.\nPlease, restart the program and enter one of the supported codes.")
-        exit()
+      resp = requests.get(URL, data={'text': piece}, params=params)
+      data_translated.append(resp.json()['text'][0])
     return ''.join(data_translated)
   else:
-    resp = requests.get(URL, data = data, params = params)
+    resp = requests.get(URL, data=data, params=params)
     return resp.json()['text'][0]
 
 def write_translation():
@@ -58,10 +52,14 @@ def write_translation():
 
 def main():
   print("Hello there!\n\nA little hint on language codes:\n 'de' stands for German,\n 'es' for Spanish,\n 'fr' for French\n and 'ru' stands for Russian.\n")
-  more_files = input('Need to translate a file? (y/n) ')
-  while more_files == 'y':
-    result_file_path = write_translation()
-    print('\nThe translation is done and written to {}.'.format(result_file_path))
-    more_files = input('\nMore files to translate? (y/n) ')
+  try:
+    more_files = input('Need to translate a file? (y/n) ')
+    while more_files == 'y':
+      result_file_path = write_translation()
+      print('\nThe translation is done and written to {}.'.format(result_file_path))
+      more_files = input('\nMore files to translate? (y/n) ')
+  except KeyError:
+    print("\nJust a kindly reminder on language codes:\n 'de' stands for German,\n 'es' for Spanish,\n 'fr' for French\n and 'ru' stands for Russian.\nPlease, restart the program and enter one of the supported codes.")
+    exit()
 
 main()
