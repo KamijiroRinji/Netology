@@ -14,6 +14,7 @@ auth_data = {
 
 TOKEN = '7679714c6b33062d56bb9406d5a531fac2cee244ebe947c3b298bf993b7528ca1f56e9403aee599048352'
 
+
 class User:
   def __init__(self, token):
     self.token = token
@@ -57,5 +58,7 @@ class User:
       else:
         return response.json()['response']
 
-user = User(TOKEN)
-pprint(user.get_mutual_friends())
+      
+if __name__ == "__main__":
+  user = User(TOKEN)
+  pprint(user.get_mutual_friends())
