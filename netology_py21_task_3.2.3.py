@@ -25,6 +25,9 @@ class User:
             'access_token': TOKEN
         }
 
+    def __str__(self):
+        return '{}{}'.format("https://vk.com/id", str(user.uid))
+
 
 if __name__ == "__main__":
     user_uid = input('Введите числовой идентификатор пользователя: ')
@@ -35,12 +38,5 @@ if __name__ == "__main__":
         exit()
 
     user = User(TOKEN, user_uid)
-
-    def print_decorator(print_function):
-        def wrapped_function(*args, **kwargs):
-            return print_function("https://vk.com/id" + str(user.uid))
-
-        return wrapped_function
-    print = print_decorator(print)
 
     print(user)
