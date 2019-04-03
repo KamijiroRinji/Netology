@@ -1,5 +1,17 @@
-# Netology
+# Домашнее задание к лекции 1.1 «Import. Module. Package»
 
-meow
+1. Разработать **структуру** программы "Бухгалтерия". 
+- main.py;  
+- директория application:  
+-- salary.py;  
+-- директория db:  
+\--- people.py;  
+main.py - основной модуль для запуска программы.  
+В модуле salary.py функция calculate_salary.  
+В модуле people.py функция get_employees.  
 
-https://github.com/netology-code/py-homework-advanced/tree/master/1.1.Import.Module.Package
+2. Импортировать функции в модуль main.py и вызывать эти функциии в конструкции.
+```
+if __name__ == '__main__':
+```
+**Сами функции реализовать не надо**. Достаточно добавить туда какой-либо вывод.
