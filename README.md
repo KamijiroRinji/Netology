@@ -93,3 +93,5 @@ get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'
 
 ## Задача №3
 Для подготовки к следующей лекции прочитайте про [менеджер контекста](https://pythonworld.ru/osnovy/with-as-menedzhery-konteksta.html).
+
+P.S.: можно также посмотреть ветку Cook-Book - версия то ли с PY-10, то ли с PY-15.
