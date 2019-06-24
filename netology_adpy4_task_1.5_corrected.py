@@ -62,3 +62,4 @@ if __name__ == '__main__':
     gmail = MailProcessor(mail_smtp, mail_smtp_port, mail_imap, mail_imap_port,
                           login, password)
     gmail.send_email()
+
