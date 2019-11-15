@@ -12,7 +12,7 @@ from sql_requests import (
 )
 
 
-db = records.Database(database_address)
+db = records.Database("postgres://netology_user:@localhost/netology_db")
 
 
 def create_tables_in_db(db):  # создает таблицы
